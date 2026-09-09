@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <title>Ministry of Revenue: Valid Recipt</title>
+  <style>
+    body { font-family: serif; background: #fff; text-align: center; padding: 20px 10px; margin: 0; }
+    h3 { font-size: 1.15em; margin-bottom: 25px; font-weight: bold; }
+    .container { max-width: 500px; margin: 0 auto; }
+    .row { display: flex; justify-content: center; margin-bottom: 6px; font-size: 0.95em; }
+    .label { font-weight: bold; margin-right: 6px; }
+    .val { word-break: break-word; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h3>Ministry of Revenue: Valid Recipt</h3>
+
+    <div class="row"><span class="label">የደረሰኝ መለያ ቁጥር:</span><span class="val" id="rNo">0000401</span></div>
+    <div class="row"><span class="label">የግብር ከፋይ መለያ ቁጥር:</span><span class="val" id="tin">0097948487</span></div>
+    <div class="row"><span class="label">የደረሰኝ ዓይነት:</span><span class="val" id="type">CASH SALES INVOICE/VAT</span></div>
+    <div class="row"><span class="label">የግብር ከፋይ ስም:</span><span class="val" id="name">ጁሃር ገበየሁ ሁሴን</span></div>
+    <div class="row"><span class="label">የግብር ከፋይ ታክስ ማዕከል:</span><span class="val" id="center">YEKA SUB CITY</span></div>
+    <div class="row"><span class="label">የቫት/VAT/ መለያ ቁጥር:</span><span class="val" id="vatNo">32561280823</span></div>
+    <div class="row"><span class="label">የቫት/VAT/ ቁጥር:</span><span class="val" id="vat">5133500823</span></div>
+    <div class="row"><span class="label">የማተሚያ ቤት ስም:</span><span class="val" id="press">BERHANENA SELAM PRINTING ENTERPRISE</span></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if(params.get('rNo')) document.getElementById('rNo').textContent = params.get('rNo');
+    if(params.get('tin')) document.getElementById('tin').textContent = params.get('tin');
+    if(params.get('name')) document.getElementById('name').textContent = params.get('name');
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
+</body>
+</html>
